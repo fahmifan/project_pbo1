@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package Game;
+
+import java.awt.EventQueue;
+import Game.GamePuzzle;
 
 /**
  *
@@ -125,7 +128,20 @@ public class MainMenuPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void easyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyBtnActionPerformed
-       
+//        BoardGame board = new BoardGame();
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new BoardGame().setVisible(true);
+//            }
+//        });
+        EventQueue.invokeLater(() -> {
+            BoardGame puzzle = new BoardGame();
+            puzzle.setVisible(true);
+        });
+//        EventQueue.invokeLater(() -> {
+//            GamePuzzle puzzle = new GamePuzzle();
+//            puzzle.setVisible(true);
+//        });
     }//GEN-LAST:event_easyBtnActionPerformed
 
     /**
