@@ -35,10 +35,8 @@ import javax.swing.JPanel;
  *
  * @author fahmi-irfan
  */
-public class BoardGame extends javax.swing.JFrame {
-
+public class BoardGameMed extends javax.swing.JFrame {
     
-//    private JPanel puzzlePanel;
     private BufferedImage source;
     private ArrayList<MyButton> buttons;
 
@@ -51,7 +49,7 @@ public class BoardGame extends javax.swing.JFrame {
     private BufferedImage resized;
 
     
-    public BoardGame() {
+    public BoardGameMed() {
         initComponents();
         initUI();
     }
@@ -65,44 +63,64 @@ public class BoardGame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        hintPanel = new javax.swing.JPanel();
+        leftMenu = new javax.swing.JPanel();
         easyLable = new javax.swing.JLabel();
+        hintImage = new javax.swing.JPanel();
         puzzlePanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(540, 360));
+        setPreferredSize(new java.awt.Dimension(400, 310));
+        setSize(new java.awt.Dimension(400, 310));
 
-        hintPanel.setBackground(new java.awt.Color(0, 102, 204));
+        leftMenu.setBackground(new java.awt.Color(0, 102, 204));
+        leftMenu.setPreferredSize(new java.awt.Dimension(100, 210));
 
         easyLable.setForeground(new java.awt.Color(255, 255, 255));
         easyLable.setText("Easy");
 
-        javax.swing.GroupLayout hintPanelLayout = new javax.swing.GroupLayout(hintPanel);
-        hintPanel.setLayout(hintPanelLayout);
-        hintPanelLayout.setHorizontalGroup(
-            hintPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(hintPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout hintImageLayout = new javax.swing.GroupLayout(hintImage);
+        hintImage.setLayout(hintImageLayout);
+        hintImageLayout.setHorizontalGroup(
+            hintImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        hintImageLayout.setVerticalGroup(
+            hintImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 97, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout leftMenuLayout = new javax.swing.GroupLayout(leftMenu);
+        leftMenu.setLayout(leftMenuLayout);
+        leftMenuLayout.setHorizontalGroup(
+            leftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftMenuLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(easyLable)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
+            .addComponent(hintImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        hintPanelLayout.setVerticalGroup(
-            hintPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(hintPanelLayout.createSequentialGroup()
+        leftMenuLayout.setVerticalGroup(
+            leftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(leftMenuLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(easyLable)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(hintImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
+
+        puzzlePanel.setAlignmentX(0.0F);
+        puzzlePanel.setPreferredSize(new java.awt.Dimension(300, 300));
 
         javax.swing.GroupLayout puzzlePanelLayout = new javax.swing.GroupLayout(puzzlePanel);
         puzzlePanel.setLayout(puzzlePanelLayout);
         puzzlePanelLayout.setHorizontalGroup(
             puzzlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
+            .addGap(0, 294, Short.MAX_VALUE)
         );
         puzzlePanelLayout.setVerticalGroup(
             puzzlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,16 +128,15 @@ public class BoardGame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(hintPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(puzzlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(leftMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(puzzlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(hintPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(puzzlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(leftMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+            .addComponent(puzzlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
         );
 
         pack();
@@ -127,7 +144,8 @@ public class BoardGame extends javax.swing.JFrame {
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel easyLable;
-    private javax.swing.JPanel hintPanel;
+    private javax.swing.JPanel hintImage;
+    private javax.swing.JPanel leftMenu;
     private javax.swing.JPanel puzzlePanel;
     // End of variables declaration//GEN-END:variables
 
@@ -137,22 +155,32 @@ public class BoardGame extends javax.swing.JFrame {
         solution.add(new Point(0, 0));
         solution.add(new Point(0, 1));
         solution.add(new Point(0, 2));
+        solution.add(new Point(0, 3));
         solution.add(new Point(1, 0));
         solution.add(new Point(1, 1));
         solution.add(new Point(1, 2));
+        solution.add(new Point(1, 3));
         solution.add(new Point(2, 0));
         solution.add(new Point(2, 1));
         solution.add(new Point(2, 2));
+        solution.add(new Point(2, 3));
+        solution.add(new Point(3, 0));
+        solution.add(new Point(3, 1));
+        solution.add(new Point(3, 2));
+        solution.add(new Point(3, 3));
 
+   
+        
         buttons = new ArrayList();
 
 //        puzzlePanel = new JPanel();
         puzzlePanel.setBorder(BorderFactory.createLineBorder(Color.gray));
-        puzzlePanel.setLayout(new GridLayout(3, 3, 0, 0));
+        puzzlePanel.setLayout(new GridLayout(4,4,0,0));
 
         try {
             source = loadImage();
             int h = getNewHeight(source.getWidth(), source.getHeight());
+            
             // Resize image into game canvas size
             resized = resizeImage(source, DESIRED_WIDTH, h,
                     BufferedImage.TYPE_INT_ARGB);
@@ -167,17 +195,17 @@ public class BoardGame extends javax.swing.JFrame {
 
         add(puzzlePanel, BorderLayout.CENTER);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
 
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 4; j++) {
 
                 image = createImage(new FilteredImageSource(resized.getSource(),
-                        new CropImageFilter(j * width / 3, i * height / 3,
-                                (width / 3), height / 3)));
+                        new CropImageFilter(j * width / 4, i * height / 4,
+                                width / 4, height / 4)));
                 MyButton button = new MyButton(image);
                 button.putClientProperty("position", new Point(i, j));
 
-                if (i == 2 && j == 2) {
+                if (i == 3 && j == 3) {
                     lastButton = new MyButton();
                     lastButton.setBorderPainted(false);
                     lastButton.setContentAreaFilled(false);
@@ -192,7 +220,7 @@ public class BoardGame extends javax.swing.JFrame {
         Collections.shuffle(buttons);
         buttons.add(lastButton);
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 16; i++) {
 
             MyButton btn = buttons.get(i);
             puzzlePanel.add(btn);
@@ -217,8 +245,7 @@ public class BoardGame extends javax.swing.JFrame {
     private BufferedImage loadImage() throws IOException {
 
         BufferedImage bimg;
-        bimg = ImageIO.read(this.getClass().getResource("jco.jpg"));
-//        (this.getClass().getResource("images/beam.png")) 
+        bimg = ImageIO.read(this.getClass().getResource("apple-color.jpg"));
         return bimg;
     }
 
@@ -255,7 +282,7 @@ public class BoardGame extends javax.swing.JFrame {
             int bidx = buttons.indexOf(button);
 
             if ((bidx - 1 == lidx) || (bidx + 1 == lidx)
-                    || (bidx - 3 == lidx) || (bidx + 3 == lidx)) {
+                    || (bidx - 4 == lidx) || (bidx + 4 == lidx)) {
                 Collections.swap(buttons, bidx, lidx);
                 updateButtons();
             }
@@ -284,7 +311,7 @@ public class BoardGame extends javax.swing.JFrame {
 
         if (compareList(solution, current)) {
             JOptionPane.showMessageDialog(puzzlePanel, "Finished",
-                    "Congratulation", JOptionPane.INFORMATION_MESSAGE);
+                "Congratulation", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -292,10 +319,10 @@ public class BoardGame extends javax.swing.JFrame {
         return ls1.toString().contentEquals(ls2.toString());
     }
 
-//    public static void main(String args[]) {
-//        EventQueue.invokeLater(() -> {
-//            BoardGame puzzle = new BoardGame();
-//            puzzle.setVisible(true);
-//        });
-//    }    
+    public static void main(String args[]) {
+        EventQueue.invokeLater(() -> {
+            BoardGameMed puzzle = new BoardGameMed();
+            puzzle.setVisible(true);
+        });
+    }    
 }

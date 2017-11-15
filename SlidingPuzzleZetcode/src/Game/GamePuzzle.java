@@ -143,7 +143,7 @@ public class GamePuzzle extends JFrame {
     private BufferedImage loadImage() throws IOException {
 
         BufferedImage bimg;
-        bimg = ImageIO.read(this.getClass().getResource("jco.jpg"));
+        bimg = ImageIO.read(this.getClass().getResource("apple-color.jpg"));
 //        (this.getClass().getResource("images/beam.png")) 
         return bimg;
     }
