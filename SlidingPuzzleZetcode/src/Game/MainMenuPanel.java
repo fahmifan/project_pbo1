@@ -4,11 +4,17 @@ import java.awt.EventQueue;
 import Game.GamePuzzle;
 
 public class MainMenuPanel extends javax.swing.JFrame {
-
+    
+    private static MainMenuPanel mm;
+    
     public MainMenuPanel() {
         initComponents();
     }
-
+        
+//    public void setMm(MainMenuPanel mm) {
+//        
+//    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,25 +120,33 @@ public class MainMenuPanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private static void closeMenu() {
+        mm.dispose();
+    }
+    
     private void easyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyBtnActionPerformed
+        closeMenu();
         EventQueue.invokeLater(() -> {
             BoardGameEasy puzzle = new BoardGameEasy();
             puzzle.setVisible(true);
         });
+        
     }//GEN-LAST:event_easyBtnActionPerformed
     private void mediumBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumBtnActionPerformed
-       EventQueue.invokeLater(() -> {
+        closeMenu();
+        EventQueue.invokeLater(() -> {
             BoardGameMed puzzle = new BoardGameMed();
             puzzle.setVisible(true);
         });
     }//GEN-LAST:event_mediumBtnActionPerformed
 
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainMenuPanel().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new MainMenuPanel().setVisible(true);
+//        });
+        mm = new MainMenuPanel();
+        mm.setVisible(true);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
