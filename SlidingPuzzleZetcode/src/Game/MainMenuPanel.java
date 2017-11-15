@@ -1,22 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Game;
 
 import java.awt.EventQueue;
 import Game.GamePuzzle;
 
-/**
- *
- * @author fahmi-irfan
- */
 public class MainMenuPanel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainMenuPanel
-     */
     public MainMenuPanel() {
         initComponents();
     }
@@ -36,7 +24,6 @@ public class MainMenuPanel extends javax.swing.JFrame {
         chooseLvLable = new javax.swing.JLabel();
         easyBtn = new javax.swing.JButton();
         mediumBtn = new javax.swing.JButton();
-        hardBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,8 +63,11 @@ public class MainMenuPanel extends javax.swing.JFrame {
         });
 
         mediumBtn.setText("MEDIUM");
-
-        hardBtn.setText("HARD");
+        mediumBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mediumBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -88,7 +78,6 @@ public class MainMenuPanel extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(mediumBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(easyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hardBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(chooseLvLable)
                         .addGap(23, 23, 23)))
@@ -103,8 +92,6 @@ public class MainMenuPanel extends javax.swing.JFrame {
                 .addComponent(easyBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(mediumBtn)
-                .addGap(13, 13, 13)
-                .addComponent(hardBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -129,39 +116,18 @@ public class MainMenuPanel extends javax.swing.JFrame {
 
     private void easyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyBtnActionPerformed
         EventQueue.invokeLater(() -> {
-            BoardGameMed puzzle = new BoardGameMed();
+            BoardGameEasy puzzle = new BoardGameEasy();
             puzzle.setVisible(true);
         });
     }//GEN-LAST:event_easyBtnActionPerformed
+    private void mediumBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumBtnActionPerformed
+       EventQueue.invokeLater(() -> {
+            BoardGameMed puzzle = new BoardGameMed();
+            puzzle.setVisible(true);
+        });
+    }//GEN-LAST:event_mediumBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenuPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenuPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenuPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenuPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainMenuPanel().setVisible(true);
@@ -172,7 +138,6 @@ public class MainMenuPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel chooseLvLable;
     private javax.swing.JButton easyBtn;
-    private javax.swing.JButton hardBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton mediumBtn;
