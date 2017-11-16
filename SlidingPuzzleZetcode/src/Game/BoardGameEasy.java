@@ -234,7 +234,7 @@ public class BoardGameEasy extends javax.swing.JFrame {
     private BufferedImage loadImage() throws IOException {
 
         BufferedImage bimg;
-        bimg = ImageIO.read(this.getClass().getResource("apple-color.jpg"));
+        bimg = ImageIO.read(this.getClass().getResource("image/angklung.jpg"));
         return bimg;
     }
 
