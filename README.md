@@ -11,6 +11,8 @@ dibuka ketika aplikasi berjalan (dekripsi) menggunakan Chiper. Contoh kodingan a
 - Untuk UI nanti akan disesuaikan lagi
 - Buat class Game sbg parent-nya trs mode Easy dan Medium cukup panggil constructor yang berbeda.
 
- [Sliding Puzzle Src.Code](http://www.airtute.com/view/How_to_Create_a_Puzzle_Game__GUI__in_Java___Beginner_friendly.html)
- [Sliding Puzzle Src. Code 2](http://zetcode.com/tutorials/javaswingtutorial "Now using this")
- [Enkripsi](http://ruchiram4.blogspot.co.id/2009/04/encrypt-and-decrypt-images-using-java.html)
+[Sliding Puzzle Src.Code](http://www.airtute.com/view/How_to_Create_a_Puzzle_Game__GUI__in_Java___Beginner_friendly.html)
+
+[Sliding Puzzle Src. Code 2](http://zetcode.com/tutorials/javaswingtutorial "Now using this")
+
+[Enkripsi](http://ruchiram4.blogspot.co.id/2009/04/encrypt-and-decrypt-images-using-java.html)
