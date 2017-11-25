@@ -66,6 +66,7 @@ public class BoardGameMed extends javax.swing.JFrame {
         leftMenu = new javax.swing.JPanel();
         easyLable = new javax.swing.JLabel();
         hintImage = new javax.swing.JPanel();
+        backBtn = new javax.swing.JButton();
         puzzlePanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,15 +90,27 @@ public class BoardGameMed extends javax.swing.JFrame {
             .addGap(0, 97, Short.MAX_VALUE)
         );
 
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout leftMenuLayout = new javax.swing.GroupLayout(leftMenu);
         leftMenu.setLayout(leftMenuLayout);
         leftMenuLayout.setHorizontalGroup(
             leftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(leftMenuLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(easyLable)
-                .addContainerGap(42, Short.MAX_VALUE))
             .addComponent(hintImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(leftMenuLayout.createSequentialGroup()
+                .addGroup(leftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(leftMenuLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(easyLable))
+                    .addGroup(leftMenuLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(backBtn)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         leftMenuLayout.setVerticalGroup(
             leftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +119,9 @@ public class BoardGameMed extends javax.swing.JFrame {
                 .addComponent(easyLable)
                 .addGap(78, 78, 78)
                 .addComponent(hintImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(backBtn)
+                .addGap(21, 21, 21))
         );
 
         puzzlePanel.setAlignmentX(0.0F);
@@ -116,7 +131,7 @@ public class BoardGameMed extends javax.swing.JFrame {
         puzzlePanel.setLayout(puzzlePanelLayout);
         puzzlePanelLayout.setHorizontalGroup(
             puzzlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
         puzzlePanelLayout.setVerticalGroup(
             puzzlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,19 +145,26 @@ public class BoardGameMed extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(leftMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(puzzlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                .addComponent(puzzlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(leftMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
-            .addComponent(puzzlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+            .addComponent(leftMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .addComponent(puzzlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        this.dispose();
+        MainMenuPanel mm = new MainMenuPanel();
+        mm.setVisible(true);
+    }//GEN-LAST:event_backBtnActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
     private javax.swing.JLabel easyLable;
     private javax.swing.JPanel hintImage;
     private javax.swing.JPanel leftMenu;
@@ -245,7 +267,7 @@ public class BoardGameMed extends javax.swing.JFrame {
     private BufferedImage loadImage() throws IOException {
 
         BufferedImage bimg;
-        bimg = ImageIO.read(this.getClass().getResource("apple-color.jpg"));
+        bimg = ImageIO.read(this.getClass().getResource("image/apple-color.jpg"));
         return bimg;
     }
 

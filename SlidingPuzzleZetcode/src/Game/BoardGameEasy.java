@@ -66,6 +66,7 @@ public class BoardGameEasy extends javax.swing.JFrame {
         leftMenu = new javax.swing.JPanel();
         easyLable = new javax.swing.JLabel();
         hintImage = new javax.swing.JPanel();
+        backBtn = new javax.swing.JButton();
         puzzlePanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,6 +90,13 @@ public class BoardGameEasy extends javax.swing.JFrame {
             .addGap(0, 97, Short.MAX_VALUE)
         );
 
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout leftMenuLayout = new javax.swing.GroupLayout(leftMenu);
         leftMenu.setLayout(leftMenuLayout);
         leftMenuLayout.setHorizontalGroup(
@@ -98,6 +106,10 @@ public class BoardGameEasy extends javax.swing.JFrame {
                 .addComponent(easyLable)
                 .addContainerGap(42, Short.MAX_VALUE))
             .addComponent(hintImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftMenuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backBtn)
+                .addGap(21, 21, 21))
         );
         leftMenuLayout.setVerticalGroup(
             leftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +118,9 @@ public class BoardGameEasy extends javax.swing.JFrame {
                 .addComponent(easyLable)
                 .addGap(78, 78, 78)
                 .addComponent(hintImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backBtn)
+                .addContainerGap())
         );
 
         puzzlePanel.setAlignmentX(0.0F);
@@ -140,8 +154,15 @@ public class BoardGameEasy extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        this.dispose();
+        MainMenuPanel mm = new MainMenuPanel();
+        mm.setVisible(true);
+    }//GEN-LAST:event_backBtnActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
     private javax.swing.JLabel easyLable;
     private javax.swing.JPanel hintImage;
     private javax.swing.JPanel leftMenu;
