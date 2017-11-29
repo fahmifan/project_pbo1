@@ -14,6 +14,7 @@ import java.awt.EventQueue;
 public class GameMedium extends GameParent{
     public GameMedium(){
         super(4);
+        super.hintImage.setVisible(false);
     }
     
     public static void main(String args[]) {

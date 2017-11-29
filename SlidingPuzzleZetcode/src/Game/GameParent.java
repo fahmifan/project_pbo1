@@ -41,7 +41,7 @@ public class GameParent extends javax.swing.JFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel easyLable;
     private javax.swing.JButton hide;
-    private javax.swing.JLabel hintImage;
+    protected javax.swing.JLabel hintImage;
     private javax.swing.JPanel leftMenu;
     private javax.swing.JPanel puzzlePanel;
     private javax.swing.JButton show;
@@ -87,7 +87,7 @@ public class GameParent extends javax.swing.JFrame {
         leftMenu.setPreferredSize(new java.awt.Dimension(100, 210));
 
         easyLable.setForeground(new java.awt.Color(255, 255, 255));
-        easyLable.setText("Easy");
+        easyLable.setText("Hint");
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +96,7 @@ public class GameParent extends javax.swing.JFrame {
             }
         });
 
-        hintImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/image/apple-resize.png"))); // NOI18N
+        hintImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/image/resize/angklung-resize.jpg"))); // NOI18N
 
         hide.setText("Hide");
         hide.addActionListener(new java.awt.event.ActionListener() {
@@ -365,8 +365,8 @@ public class GameParent extends javax.swing.JFrame {
         }
 
         if (compareList(solution, current)) {
-            JOptionPane.showMessageDialog(puzzlePanel, "Finished",
-                "Congratulation", JOptionPane.INFORMATION_MESSAGE);            
+            JOptionPane.showMessageDialog(puzzlePanel, "Angklung",
+                "Angklung adalah alat musik multitonal (bernada ganda) yang secara tradisional berkembang dalam masyarakat Sunda di Pulau Jawa bagian barat. Alat musik ini dibuat dari bambu, dibunyikan dengan cara digoyangkan (bunyi disebabkan oleh benturan badan pipa bambu) sehingga menghasilkan bunyi yang bergetar dalam susunan nada 2, 3, sampai 4 nada dalam setiap ukuran, baik besar maupun kecil.", JOptionPane.INFORMATION_MESSAGE);            
         }
     }
 

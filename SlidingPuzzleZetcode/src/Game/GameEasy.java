@@ -15,6 +15,7 @@ public class GameEasy extends GameParent{
     
     public GameEasy(){
         super(3);
+        super.hintImage.setVisible(false);
     }
     
     public static void main(String args[]) {

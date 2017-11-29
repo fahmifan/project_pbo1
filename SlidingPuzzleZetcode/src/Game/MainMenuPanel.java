@@ -120,7 +120,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
     private void easyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyBtnActionPerformed
         this.dispose();
         EventQueue.invokeLater(() -> {
-            BoardGameEasy puzzle = new BoardGameEasy();
+            GameEasy puzzle = new GameEasy();
             puzzle.setVisible(true);
         });
         
@@ -128,7 +128,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
     private void mediumBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumBtnActionPerformed
         this.dispose();
         EventQueue.invokeLater(() -> {
-            BoardGameMed puzzle = new BoardGameMed();
+            GameMedium puzzle = new GameMedium();
             puzzle.setVisible(true);
         });
     }//GEN-LAST:event_mediumBtnActionPerformed
