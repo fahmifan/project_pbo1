@@ -157,8 +157,12 @@ public class BoardGameEasy extends javax.swing.JFrame {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         this.dispose();
-        MainMenuPanel mm = new MainMenuPanel();
-        mm.setVisible(true);
+        if(MainMenuPanel.mm == null) {
+            MainMenuPanel mm = new MainMenuPanel();
+            mm.setVisible(true);
+        } else {
+            MainMenuPanel.mm.setVisible(true);
+        }
     }//GEN-LAST:event_backBtnActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables

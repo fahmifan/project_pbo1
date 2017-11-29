@@ -77,10 +77,13 @@ public class BoardGameMed extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 410, 310));
+        setMaximumSize(new java.awt.Dimension(410, 310));
+        setMinimumSize(new java.awt.Dimension(410, 310));
         setResizable(false);
         setSize(new java.awt.Dimension(410, 310));
 
         puzzlePanel.setAlignmentX(0.0F);
+        puzzlePanel.setAlignmentY(0.0F);
         puzzlePanel.setMaximumSize(new java.awt.Dimension(300, 300));
         puzzlePanel.setMinimumSize(new java.awt.Dimension(300, 300));
         puzzlePanel.setPreferredSize(new java.awt.Dimension(300, 300));
@@ -182,8 +185,12 @@ public class BoardGameMed extends javax.swing.JFrame {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         this.dispose();
-        MainMenuPanel mm = new MainMenuPanel();
-        mm.setVisible(true);
+        if(MainMenuPanel.mm == null) {
+            MainMenuPanel mm = new MainMenuPanel();
+            mm.setVisible(true);
+        } else {
+            MainMenuPanel.mm.setVisible(true);
+        }
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void hideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hideActionPerformed

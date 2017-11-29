@@ -5,7 +5,7 @@ import Game.GamePuzzle;
 
 public class MainMenuPanel extends javax.swing.JFrame {
     
-    private static MainMenuPanel mm;
+    public static MainMenuPanel mm;
     
     public MainMenuPanel() {
         initComponents();
@@ -121,11 +121,21 @@ public class MainMenuPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private static void closeMenu() {
-        mm.dispose();
+        
+        if(mm != null) {
+            mm.dispose();
+            mm.setVisible(false);
+            return;
+        } else {
+//            mm = new MainMenuPanel();
+            mm.dispose();
+            mm.setVisible(false);
+        }
     }
     
     private void easyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyBtnActionPerformed
-        closeMenu();
+//        closeMenu();
+        this.dispose();
         EventQueue.invokeLater(() -> {
             BoardGameEasy puzzle = new BoardGameEasy();
             puzzle.setVisible(true);
@@ -133,7 +143,8 @@ public class MainMenuPanel extends javax.swing.JFrame {
         
     }//GEN-LAST:event_easyBtnActionPerformed
     private void mediumBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumBtnActionPerformed
-        closeMenu();
+//        closeMenu();
+        this.dispose();
         EventQueue.invokeLater(() -> {
             BoardGameMed puzzle = new BoardGameMed();
             puzzle.setVisible(true);
@@ -144,9 +155,13 @@ public class MainMenuPanel extends javax.swing.JFrame {
 //        java.awt.EventQueue.invokeLater(() -> {
 //            new MainMenuPanel().setVisible(true);
 //        });
-        mm = new MainMenuPanel();
-        mm.setVisible(true);
-        
+        if(mm == null) {
+            mm = new MainMenuPanel();
+            mm.setVisible(true);
+            return;
+        } else {
+            mm.setVisible(true);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
