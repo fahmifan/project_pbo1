@@ -255,7 +255,6 @@ public class BoardGameMed extends javax.swing.JFrame {
         
         buttons = new ArrayList();
 
-//        puzzlePanel = new JPanel();
         puzzlePanel.setBorder(BorderFactory.createLineBorder(Color.gray));
         puzzlePanel.setLayout(new GridLayout(4,4,0,0));
 

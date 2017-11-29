@@ -10,11 +10,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
     public MainMenuPanel() {
         initComponents();
     }
-        
-//    public void setMm(MainMenuPanel mm) {
-//        
-//    }
-    
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
