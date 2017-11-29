@@ -65,12 +65,16 @@ public class BoardGameEasy extends javax.swing.JFrame {
 
         leftMenu = new javax.swing.JPanel();
         easyLable = new javax.swing.JLabel();
-        hintImage = new javax.swing.JPanel();
         backBtn = new javax.swing.JButton();
+        hintImage = new javax.swing.JLabel();
+        hide = new javax.swing.JButton();
+        show = new javax.swing.JButton();
         puzzlePanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 311));
+        setMaximumSize(new java.awt.Dimension(410, 310));
+        setPreferredSize(new java.awt.Dimension(400, 310));
+        setResizable(false);
         setSize(new java.awt.Dimension(400, 311));
 
         leftMenu.setBackground(new java.awt.Color(0, 102, 204));
@@ -79,21 +83,27 @@ public class BoardGameEasy extends javax.swing.JFrame {
         easyLable.setForeground(new java.awt.Color(255, 255, 255));
         easyLable.setText("Easy");
 
-        javax.swing.GroupLayout hintImageLayout = new javax.swing.GroupLayout(hintImage);
-        hintImage.setLayout(hintImageLayout);
-        hintImageLayout.setHorizontalGroup(
-            hintImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        hintImageLayout.setVerticalGroup(
-            hintImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 97, Short.MAX_VALUE)
-        );
-
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
+            }
+        });
+
+        hintImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/image/apple-resize.png"))); // NOI18N
+
+        hide.setText("Hide");
+        hide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hideActionPerformed(evt);
+            }
+        });
+
+        show.setText("Show");
+        show.setAlignmentY(0.0F);
+        show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showActionPerformed(evt);
             }
         });
 
@@ -104,23 +114,30 @@ public class BoardGameEasy extends javax.swing.JFrame {
             .addGroup(leftMenuLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(easyLable)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(hintImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftMenuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backBtn)
-                .addGap(21, 21, 21))
+                .addGroup(leftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(hide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(show, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(backBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         leftMenuLayout.setVerticalGroup(
             leftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftMenuLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(easyLable)
-                .addGap(78, 78, 78)
-                .addComponent(hintImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(hintImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(hide)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(show)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backBtn)
-                .addContainerGap())
+                .addGap(19, 19, 19))
         );
 
         puzzlePanel.setAlignmentX(0.0F);
@@ -130,7 +147,7 @@ public class BoardGameEasy extends javax.swing.JFrame {
         puzzlePanel.setLayout(puzzlePanelLayout);
         puzzlePanelLayout.setHorizontalGroup(
             puzzlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGap(0, 299, Short.MAX_VALUE)
         );
         puzzlePanelLayout.setVerticalGroup(
             puzzlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,8 +160,8 @@ public class BoardGameEasy extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(leftMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(puzzlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+                .addGap(0, 1, Short.MAX_VALUE)
+                .addComponent(puzzlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,13 +181,23 @@ public class BoardGameEasy extends javax.swing.JFrame {
             MainMenuPanel.mm.setVisible(true);
         }
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void hideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hideActionPerformed
+        hintImage.setVisible(false);
+    }//GEN-LAST:event_hideActionPerformed
+
+    private void showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionPerformed
+        hintImage.setVisible(true);
+    }//GEN-LAST:event_showActionPerformed
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel easyLable;
-    private javax.swing.JPanel hintImage;
+    private javax.swing.JButton hide;
+    private javax.swing.JLabel hintImage;
     private javax.swing.JPanel leftMenu;
     private javax.swing.JPanel puzzlePanel;
+    private javax.swing.JButton show;
     // End of variables declaration//GEN-END:variables
 
    

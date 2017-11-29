@@ -144,8 +144,8 @@ public class BoardGameMed extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(leftMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(show, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(backBtn)
-                            .addComponent(hide, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))))
+                            .addComponent(hide, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                            .addComponent(backBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         leftMenuLayout.setVerticalGroup(
@@ -155,7 +155,7 @@ public class BoardGameMed extends javax.swing.JFrame {
                 .addComponent(easyLable)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(imageHint, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(hide)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(show)
@@ -325,7 +325,7 @@ public class BoardGameMed extends javax.swing.JFrame {
     }
     
     private BufferedImage loadIcon() throws IOException {
-                try {
+        try {
             BufferedImage inputImage = ImageIO.read(this.getClass().getResource("image/apple-color.jpg"));
 //            Image dimg = img.getScaledInstance(100,100,Image.SCALE_SMOOTH);
             BufferedImage outputImage = new BufferedImage(100,
