@@ -120,21 +120,8 @@ public class MainMenuPanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private static void closeMenu() {
-        
-        if(mm != null) {
-            mm.dispose();
-            mm.setVisible(false);
-            return;
-        } else {
-//            mm = new MainMenuPanel();
-            mm.dispose();
-            mm.setVisible(false);
-        }
-    }
     
     private void easyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyBtnActionPerformed
-//        closeMenu();
         this.dispose();
         EventQueue.invokeLater(() -> {
             BoardGameEasy puzzle = new BoardGameEasy();
@@ -143,7 +130,6 @@ public class MainMenuPanel extends javax.swing.JFrame {
         
     }//GEN-LAST:event_easyBtnActionPerformed
     private void mediumBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumBtnActionPerformed
-//        closeMenu();
         this.dispose();
         EventQueue.invokeLater(() -> {
             BoardGameMed puzzle = new BoardGameMed();
@@ -152,9 +138,6 @@ public class MainMenuPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_mediumBtnActionPerformed
 
     public static void main(String args[]) {
-//        java.awt.EventQueue.invokeLater(() -> {
-//            new MainMenuPanel().setVisible(true);
-//        });
         if(mm == null) {
             mm = new MainMenuPanel();
             mm.setVisible(true);
