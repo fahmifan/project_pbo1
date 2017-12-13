@@ -36,6 +36,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
         easyBtn = new javax.swing.JButton();
         mediumBtn = new javax.swing.JButton();
         imageCombo = new javax.swing.JComboBox<>();
+        icon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,23 +59,23 @@ public class MainMenuPanel extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(titleLable, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         chooseLvLable.setBackground(new java.awt.Color(255, 255, 255));
         chooseLvLable.setForeground(new java.awt.Color(255, 255, 255));
-        chooseLvLable.setText("Choose Level");
+        chooseLvLable.setText("Tingkat Kesulitan");
 
-        easyBtn.setText("EASY");
+        easyBtn.setText("Mudah");
         easyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 easyBtnActionPerformed(evt);
             }
         });
 
-        mediumBtn.setText("MEDIUM");
+        mediumBtn.setText("Susah");
         mediumBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mediumBtnActionPerformed(evt);
@@ -88,6 +89,11 @@ public class MainMenuPanel extends javax.swing.JFrame {
             }
         });
 
+        icon.setForeground(new java.awt.Color(255, 255, 255));
+        icon.setMaximumSize(new java.awt.Dimension(100, 100));
+        icon.setMinimumSize(new java.awt.Dimension(100, 100));
+        icon.setPreferredSize(new java.awt.Dimension(100, 100));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -96,16 +102,18 @@ public class MainMenuPanel extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(imageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(imageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mediumBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(easyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chooseLvLable)
-                                .addGap(23, 23, 23)))))
+                            .addComponent(easyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(chooseLvLable)
+                .addGap(56, 56, 56))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,9 +124,11 @@ public class MainMenuPanel extends javax.swing.JFrame {
                 .addComponent(easyBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(mediumBtn)
-                .addGap(68, 68, 68)
+                .addGap(18, 18, 18)
                 .addComponent(imageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +148,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -162,19 +173,22 @@ public class MainMenuPanel extends javax.swing.JFrame {
         JComboBox cb = (JComboBox)evt.getSource();
         String imageName = (String)cb.getSelectedItem();
         this.path = imageName + ".jpg";
-//        updateLabel(this.path);
+        updateLabel(this.path);
     }//GEN-LAST:event_imageComboActionPerformed
    
     protected void updateLabel(String name) {
-        System.out.println("ComboBox : " + name);
-
-        ImageIcon icon = createImageIcon("image/" + name);
-        picture.setIcon(icon);
-        picture.setToolTipText("Image of " + name.toLowerCase());
-        if(icon != null) {
-            picture.setText(null);
-        } else {
-            picture.setText("Image not found");
+        System.out.println("Image icon : " + name);
+        try {
+            ImageIcon icon = createImageIcon("image/resize/" + name);
+            this.icon.setIcon(icon);
+            this.icon.setToolTipText("Image of " + name.toLowerCase());
+            if(icon != null) {
+                this.icon.setText(null);
+            } else {
+                this.icon.setText("Image not found");
+            }
+        } catch(Exception e) {
+            System.out.println("Cannot set icon");
         }
     }
     
@@ -202,6 +216,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel chooseLvLable;
     private javax.swing.JButton easyBtn;
+    private javax.swing.JLabel icon;
     private javax.swing.JComboBox<String> imageCombo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
