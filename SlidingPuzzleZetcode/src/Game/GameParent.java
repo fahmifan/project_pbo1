@@ -55,14 +55,15 @@ public class GameParent extends javax.swing.JFrame {
     protected final int DESIRED_WIDTH = 300;
     protected BufferedImage resized;
     protected int grid;
+    public String path;
 
     ArrayList<Point> solution = new ArrayList();
         
-    public GameParent(int grid) {
+    public GameParent(int grid, String path) {
         this.grid = grid;
+        this.path = path;
         initComponents();
         initUI();
-
     }
 
     @SuppressWarnings("unchecked")
@@ -96,7 +97,7 @@ public class GameParent extends javax.swing.JFrame {
             }
         });
 
-        hintImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/image/resize/angklung-resize.jpg"))); // NOI18N
+        hintImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/image/resize/" + this.path))); // NOI18N
 
         hide.setText("Hide");
         hide.addActionListener(new java.awt.event.ActionListener() {
@@ -203,6 +204,12 @@ public class GameParent extends javax.swing.JFrame {
         return this.grid;
     }
     
+//    This will get string path of image and return it to use in source and hint image
+    protected String getStringPath(String string) {
+//        Combobox goes here
+        return "a path";
+    }
+    
     protected void gameSolution() {
         for(int i = 0; i < this.grid; i++) {
             for(int j = 0; j < this.grid; j ++) {
@@ -211,17 +218,6 @@ public class GameParent extends javax.swing.JFrame {
         }
     }
     protected void initUI() {
-
-//        solution.add(new Point(0, 0));
-//        solution.add(new Point(0, 1));
-//        solution.add(new Point(0, 2));
-//        solution.add(new Point(1, 0));
-//        solution.add(new Point(1, 1));
-//        solution.add(new Point(1, 2));
-//        solution.add(new Point(2, 0));
-//        solution.add(new Point(2, 1));
-//        solution.add(new Point(2, 2));
-        
         gameSolution();
         
         buttons = new ArrayList();
@@ -299,7 +295,10 @@ public class GameParent extends javax.swing.JFrame {
     private BufferedImage loadImage() throws IOException {
 
         BufferedImage bimg;
-        bimg = ImageIO.read(this.getClass().getResource("image/angklung.jpg"));
+//        bimg = ImageIO.read(this.getClass().getResource("image/angklung.jpg"));
+        System.out.println("Load image path : " + this.path);
+//        bimg = ImageIO.read(this.getClass().getResource("image/" + this.path));
+        bimg = ImageIO.read(this.getClass().getResource("image/" + this.path));
         return bimg;
     }
 
@@ -316,7 +315,6 @@ public class GameParent extends javax.swing.JFrame {
 
     private class ClickAction extends AbstractAction {
         public int grid = GameParent.this.grid;
-//        public int grid = getGrid();
         @Override
         public void actionPerformed(ActionEvent e) {
             
@@ -373,12 +371,4 @@ public class GameParent extends javax.swing.JFrame {
     public static boolean compareList(List ls1, List ls2) {
         return ls1.toString().contentEquals(ls2.toString());
     }
-
-    public static void main(String args[]) {
-        EventQueue.invokeLater(() -> {
-            GameParent puzzle = new GameParent(3);
-//            System.out.println( puzzle.getGrid());
-            puzzle.setVisible(true);
-        });
-    }    
 }

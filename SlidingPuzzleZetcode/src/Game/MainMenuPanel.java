@@ -2,11 +2,20 @@ package Game;
 
 import java.awt.EventQueue;
 import Game.GamePuzzle;
+import java.io.File;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainMenuPanel extends javax.swing.JFrame {
     
     public static MainMenuPanel mm;
-    
+    String[] imageString = {"angklung", "apple-color", "jco"};
+    JLabel picture;
+    protected String path;
     public MainMenuPanel() {
         initComponents();
     }
@@ -26,6 +35,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
         chooseLvLable = new javax.swing.JLabel();
         easyBtn = new javax.swing.JButton();
         mediumBtn = new javax.swing.JButton();
+        chooseFile = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,18 +81,27 @@ public class MainMenuPanel extends javax.swing.JFrame {
             }
         });
 
+        chooseFile.setText("Choose File");
+        chooseFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseFileActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mediumBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(easyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(chooseLvLable)
-                        .addGap(23, 23, 23)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(mediumBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(easyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(chooseLvLable)
+                            .addGap(23, 23, 23)))
+                    .addComponent(chooseFile, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -94,7 +113,9 @@ public class MainMenuPanel extends javax.swing.JFrame {
                 .addComponent(easyBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(mediumBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chooseFile)
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,19 +141,65 @@ public class MainMenuPanel extends javax.swing.JFrame {
     private void easyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyBtnActionPerformed
         this.dispose();
         EventQueue.invokeLater(() -> {
-            GameEasy puzzle = new GameEasy();
+            System.out.println("Easy btn : " + this.path);
+            GameEasy puzzle = new GameEasy(this.path);
             puzzle.setVisible(true);
-        });
-        
+            System.out.println("Easy object : " + puzzle.path);
+        });        
     }//GEN-LAST:event_easyBtnActionPerformed
     private void mediumBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumBtnActionPerformed
         this.dispose();
         EventQueue.invokeLater(() -> {
-            GameMedium puzzle = new GameMedium();
+            GameMedium puzzle = new GameMedium(this.path);
             puzzle.setVisible(true);
         });
     }//GEN-LAST:event_mediumBtnActionPerformed
 
+    private void chooseFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseFileActionPerformed
+        // TODO add your handling code here:
+        JFileChooser file = new JFileChooser();
+        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+        //filter the files
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg","gif","png");
+        try {
+            file.addChoosableFileFilter(filter);
+            int result = file.showSaveDialog(null);
+            //if the user click on save in Jfilechooser
+            if(result == JFileChooser.APPROVE_OPTION){
+                File selectedFile = file.getSelectedFile();
+    //            this.path = selectedFile.getAbsolutePath();
+                this.path = selectedFile.getName();
+                System.out.println("File chooser : " + this.path);
+                //if the user click on save in Jfilechooser
+            }  else if(result == JFileChooser.CANCEL_OPTION){
+                System.out.println("No File Select");
+            }
+        } catch(Exception e) {
+            System.out.println("File not found" + e);
+        }
+    }//GEN-LAST:event_chooseFileActionPerformed
+
+    protected void updateLabel(String name) {
+        ImageIcon icon = createImageIcon("image/" + name + ".jpg");
+        picture.setIcon(icon);
+        picture.setToolTipText("Image of " + name.toLowerCase());
+        if(icon != null) {
+            picture.setText(null);
+        } else {
+            picture.setText("Image not found");
+        }
+    }
+    
+    protected static ImageIcon createImageIcon(String path) {
+        URL imageURL = MainMenuPanel.class.getResource(path);
+        if(imageURL != null) {
+            return new ImageIcon(imageURL);
+        } else {
+            System.err.println("Couldn't find file : " + path);
+            return null;
+        }
+    }
+            
     public static void main(String args[]) {
         if(mm == null) {
             mm = new MainMenuPanel();
@@ -144,6 +211,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton chooseFile;
     private javax.swing.JLabel chooseLvLable;
     private javax.swing.JButton easyBtn;
     private javax.swing.JPanel jPanel1;

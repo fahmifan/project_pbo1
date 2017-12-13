@@ -13,15 +13,15 @@ import java.awt.EventQueue;
  */
 public class GameEasy extends GameParent{
     
-    public GameEasy(){
-        super(3);
+    public GameEasy(String path){
+        super(3, path);
         super.hintImage.setVisible(false);
     }
     
-    public static void main(String args[]) {
-        EventQueue.invokeLater(() -> {
-            GameEasy puzzle = new GameEasy();
-            puzzle.setVisible(true);
-        });
-    }    
+//    public static void main(String args[]) {
+//        EventQueue.invokeLater(() -> {
+//            GameEasy puzzle = new GameEasy();
+//            puzzle.setVisible(true);
+//        });
+//    }    
 }

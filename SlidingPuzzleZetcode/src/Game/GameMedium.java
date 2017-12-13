@@ -12,15 +12,15 @@ import java.awt.EventQueue;
  * @author fahmi-irfan
  */
 public class GameMedium extends GameParent{
-    public GameMedium(){
-        super(4);
+    public GameMedium(String path){
+        super(4, path);
         super.hintImage.setVisible(false);
     }
     
-    public static void main(String args[]) {
-        EventQueue.invokeLater(() -> {
-            GameMedium puzzle = new GameMedium();
-            puzzle.setVisible(true);
-        });
-    }    
+//    public static void main(String args[]) {
+//        EventQueue.invokeLater(() -> {
+//            GameMedium puzzle = new GameMedium();
+//            puzzle.setVisible(true);
+//        });
+//    }    
 }
