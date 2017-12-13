@@ -236,7 +236,7 @@ public class GameParent extends javax.swing.JFrame {
                     BufferedImage.TYPE_INT_ARGB);
 
         } catch (IOException ex) {
-            Logger.getLogger(GamePuzzle.class.getName()).log(
+            Logger.getLogger(GameParent.class.getName()).log(
                     Level.SEVERE, null, ex);
         }
 

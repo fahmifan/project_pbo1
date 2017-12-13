@@ -1,7 +1,7 @@
 package Game;
 
 import java.awt.EventQueue;
-import Game.GamePuzzle;
+import Game.GameParent;
 import java.io.File;
 import java.net.URL;
 import javax.swing.ImageIcon;
