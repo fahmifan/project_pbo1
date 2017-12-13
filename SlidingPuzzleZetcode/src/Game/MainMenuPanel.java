@@ -35,7 +35,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
         chooseLvLable = new javax.swing.JLabel();
         easyBtn = new javax.swing.JButton();
         mediumBtn = new javax.swing.JButton();
-        chooseFile = new javax.swing.JToggleButton();
+        imageCombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,10 +81,10 @@ public class MainMenuPanel extends javax.swing.JFrame {
             }
         });
 
-        chooseFile.setText("Choose File");
-        chooseFile.addActionListener(new java.awt.event.ActionListener() {
+        imageCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "angklung", "apple-color", "jco"}));
+        imageCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chooseFileActionPerformed(evt);
+                imageComboActionPerformed(evt);
             }
         });
 
@@ -93,15 +93,18 @@ public class MainMenuPanel extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(mediumBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(easyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(chooseLvLable)
-                            .addGap(23, 23, 23)))
-                    .addComponent(chooseFile, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(imageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(mediumBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(easyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(chooseLvLable)
+                                .addGap(23, 23, 23)))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -113,9 +116,9 @@ public class MainMenuPanel extends javax.swing.JFrame {
                 .addComponent(easyBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(mediumBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(chooseFile)
-                .addGap(52, 52, 52))
+                .addGap(68, 68, 68)
+                .addComponent(imageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -155,32 +158,17 @@ public class MainMenuPanel extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_mediumBtnActionPerformed
 
-    private void chooseFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseFileActionPerformed
-        // TODO add your handling code here:
-        JFileChooser file = new JFileChooser();
-        file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        //filter the files
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg","gif","png");
-        try {
-            file.addChoosableFileFilter(filter);
-            int result = file.showSaveDialog(null);
-            //if the user click on save in Jfilechooser
-            if(result == JFileChooser.APPROVE_OPTION){
-                File selectedFile = file.getSelectedFile();
-    //            this.path = selectedFile.getAbsolutePath();
-                this.path = selectedFile.getName();
-                System.out.println("File chooser : " + this.path);
-                //if the user click on save in Jfilechooser
-            }  else if(result == JFileChooser.CANCEL_OPTION){
-                System.out.println("No File Select");
-            }
-        } catch(Exception e) {
-            System.out.println("File not found" + e);
-        }
-    }//GEN-LAST:event_chooseFileActionPerformed
-
+    private void imageComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imageComboActionPerformed
+        JComboBox cb = (JComboBox)evt.getSource();
+        String imageName = (String)cb.getSelectedItem();
+        this.path = imageName + ".jpg";
+//        updateLabel(this.path);
+    }//GEN-LAST:event_imageComboActionPerformed
+   
     protected void updateLabel(String name) {
-        ImageIcon icon = createImageIcon("image/" + name + ".jpg");
+        System.out.println("ComboBox : " + name);
+
+        ImageIcon icon = createImageIcon("image/" + name);
         picture.setIcon(icon);
         picture.setToolTipText("Image of " + name.toLowerCase());
         if(icon != null) {
@@ -204,6 +192,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
         if(mm == null) {
             mm = new MainMenuPanel();
             mm.setVisible(true);
+            ComboBoxDemo cb = new ComboBoxDemo();
             return;
         } else {
             mm.setVisible(true);
@@ -211,9 +200,9 @@ public class MainMenuPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton chooseFile;
     private javax.swing.JLabel chooseLvLable;
     private javax.swing.JButton easyBtn;
+    private javax.swing.JComboBox<String> imageCombo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton mediumBtn;
