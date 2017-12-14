@@ -17,11 +17,15 @@ import java.awt.image.BufferedImage;
 import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -197,6 +201,18 @@ public class GameParent extends javax.swing.JFrame {
         hintImage.setVisible(true);
     }//GEN-LAST:event_showActionPerformed
 
+    private static String readLineByLine(String filePath) {
+        StringBuilder contentBuilder = new StringBuilder();
+        
+        try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8)) {
+            stream.forEach(s -> contentBuilder.append(s).append("\n"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return contentBuilder.toString();
+    }
+    
     public void setGrid(int grid) {
         this.grid = grid;
     }
@@ -363,8 +379,8 @@ public class GameParent extends javax.swing.JFrame {
         }
 
         if (compareList(solution, current)) {
-            JOptionPane.showMessageDialog(puzzlePanel, "Angklung",
-                "Angklung adalah alat musik multitonal (bernada ganda) yang secara tradisional berkembang dalam masyarakat Sunda di Pulau Jawa bagian barat. Alat musik ini dibuat dari bambu, dibunyikan dengan cara digoyangkan (bunyi disebabkan oleh benturan badan pipa bambu) sehingga menghasilkan bunyi yang bergetar dalam susunan nada 2, 3, sampai 4 nada dalam setiap ukuran, baik besar maupun kecil.", JOptionPane.INFORMATION_MESSAGE);            
+            JOptionPane.showMessageDialog(puzzlePanel, "Kebudayaan Sunda perlu" + "\n" + "kita jaga dan lestarikan :D",
+                "Kebudayaan Sunda", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
