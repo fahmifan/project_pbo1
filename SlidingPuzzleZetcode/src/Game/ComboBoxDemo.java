@@ -18,12 +18,12 @@ public class ComboBoxDemo extends JPanel implements ActionListener {
     public ComboBoxDemo() {
         super(new BorderLayout());
 
-        String[] picString = { "angklung", "apple-color", "jco"};
+        String[] picString = {"angklung", "egrang", "kaleci", "lodong", "panggal"};
 
         //Create the combo box, select the item at index 4.
         //Indices start at 0, so 4 specifies the pig.
         JComboBox petList = new JComboBox(picString);
-        petList.setSelectedIndex(2);
+        petList.setSelectedIndex(0);
         petList.addActionListener(this);
 
         //Set up the picture.

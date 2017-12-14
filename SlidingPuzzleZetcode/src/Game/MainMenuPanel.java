@@ -14,7 +14,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
     
     public static MainMenuPanel mm;
     JLabel picture;
-    protected String path;
+    protected String path = "angklung.jpg";
     public MainMenuPanel() {
         initComponents();
     }
@@ -82,6 +82,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
         });
 
         imageCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "angklung", "egrang", "kaleci", "lodong", "panggal"}));
+        imageCombo.setSelectedIndex(0);
         imageCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imageComboActionPerformed(evt);

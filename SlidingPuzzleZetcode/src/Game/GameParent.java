@@ -273,7 +273,7 @@ public class GameParent extends javax.swing.JFrame {
                 }
             }
         }
-
+//      Mengacak
         Collections.shuffle(buttons);
         buttons.add(lastButton);
         int grids = this.grid*this.grid;
