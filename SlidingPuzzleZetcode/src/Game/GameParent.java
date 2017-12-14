@@ -200,18 +200,6 @@ public class GameParent extends javax.swing.JFrame {
     private void showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionPerformed
         hintImage.setVisible(true);
     }//GEN-LAST:event_showActionPerformed
-
-    private static String readLineByLine(String filePath) {
-        StringBuilder contentBuilder = new StringBuilder();
-        
-        try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8)) {
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        return contentBuilder.toString();
-    }
     
     public void setGrid(int grid) {
         this.grid = grid;
@@ -226,6 +214,7 @@ public class GameParent extends javax.swing.JFrame {
         return "a path";
     }
     
+//    menyimpan point dari gambar sebelum diacak
     protected void gameSolution() {
         for(int i = 0; i < this.grid; i++) {
             for(int j = 0; j < this.grid; j ++) {
@@ -261,6 +250,7 @@ public class GameParent extends javax.swing.JFrame {
 
         add(puzzlePanel, BorderLayout.CENTER);
 
+//        Memasukkan gambar ke button
         for (int i = 0; i < this.grid; i++) {
             
             for (int j = 0; j < this.grid; j++) {
@@ -270,7 +260,8 @@ public class GameParent extends javax.swing.JFrame {
                                 width / this.grid, height / this.grid)));
                 MyButton button = new MyButton(image);
                 button.putClientProperty("position", new Point(i, j));
-
+                
+//              Cek apakah sudah pada koordinat kolom terkahir baris terkahir
                 if (i == (this.grid-1) && j == (this.grid-1)) {
                     lastButton = new MyButton();
                     lastButton.setBorderPainted(false);
@@ -286,6 +277,7 @@ public class GameParent extends javax.swing.JFrame {
         Collections.shuffle(buttons);
         buttons.add(lastButton);
         int grids = this.grid*this.grid;
+//        menambahkan button ke panel
         for (int i = 0; i < grids; i++) {
 
             MyButton btn = buttons.get(i);
@@ -308,12 +300,10 @@ public class GameParent extends javax.swing.JFrame {
         return newHeight;
     }
     
+//    meload buffered image dari source path
     private BufferedImage loadImage() throws IOException {
-
         BufferedImage bimg;
-//        bimg = ImageIO.read(this.getClass().getResource("image/angklung.jpg"));
         System.out.println("Load image path : " + this.path);
-//        bimg = ImageIO.read(this.getClass().getResource("image/" + this.path));
         bimg = ImageIO.read(this.getClass().getResource("image/" + this.path));
         return bimg;
     }
@@ -338,10 +328,12 @@ public class GameParent extends javax.swing.JFrame {
             checkSolution();
         }
 
+//        Melisten mouse action(klik)
         private void checkButton(ActionEvent e) {
 
             int lidx = 0;
             for (MyButton button : buttons) {
+//              mendapatkan koordinat lastButton
                 if (button.isLastButton()) {
                     lidx = buttons.indexOf(button);
                 }
@@ -349,14 +341,14 @@ public class GameParent extends javax.swing.JFrame {
             
             JButton button = (JButton) e.getSource();
             int bidx = buttons.indexOf(button);
-
+//          Jika disampingnya adalah koordian lastButton(lidx) maka swap dengan yg diklik
             if ((bidx - 1 == lidx) || (bidx + 1 == lidx)
                     || (bidx - (this.grid) == lidx) || (bidx + (this.grid) == lidx)) {
                 Collections.swap(buttons, bidx, lidx);
                 updateButtons();
             }
         }
-
+//      reload panel
         private void updateButtons() {
 
             puzzlePanel.removeAll();
@@ -377,7 +369,7 @@ public class GameParent extends javax.swing.JFrame {
         for (JComponent btn : buttons) {
             current.add((Point) btn.getClientProperty("position"));
         }
-
+//      Jika koordinat sudah sama dengan yg ada sebelum diacak maka sudah berhasil
         if (compareList(solution, current)) {
             JOptionPane.showMessageDialog(puzzlePanel, "Kebudayaan Sunda perlu" + "\n" + "kita jaga dan lestarikan :D",
                 "Kebudayaan Sunda", JOptionPane.INFORMATION_MESSAGE);

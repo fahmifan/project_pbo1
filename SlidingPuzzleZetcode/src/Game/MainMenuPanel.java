@@ -13,7 +13,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class MainMenuPanel extends javax.swing.JFrame {
     
     public static MainMenuPanel mm;
-    String[] imageString = {"angklung", "apple-color", "jco"};
     JLabel picture;
     protected String path;
     public MainMenuPanel() {
