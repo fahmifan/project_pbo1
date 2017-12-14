@@ -160,7 +160,7 @@
         <Component class="javax.swing.JComboBox" name="imageCombo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;angklung&quot;, &quot;apple-color&quot;, &quot;jco&quot;})" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;angklung&quot;, &quot;egrang&quot;, &quot;kaleci&quot;, &quot;lodong&quot;, &quot;panggal&quot;})" type="code"/>
             </Property>
           </Properties>
           <Events>

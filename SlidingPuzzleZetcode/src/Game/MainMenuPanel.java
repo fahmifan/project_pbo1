@@ -82,7 +82,7 @@ public class MainMenuPanel extends javax.swing.JFrame {
             }
         });
 
-        imageCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "angklung", "apple-color", "jco"}));
+        imageCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "angklung", "egrang", "kaleci", "lodong", "panggal"}));
         imageCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imageComboActionPerformed(evt);
