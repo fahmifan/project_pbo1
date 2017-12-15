@@ -277,6 +277,7 @@ public class GameParent extends javax.swing.JFrame {
         Collections.shuffle(buttons);
         buttons.add(lastButton);
         int grids = this.grid*this.grid;
+        
 //        menambahkan button ke panel
         for (int i = 0; i < grids; i++) {
 
